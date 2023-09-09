@@ -26,6 +26,13 @@ export function* generateWithState(runner, init) {
     } else {
       step++;
     }
+  }
+}
 
+export function* generateRecursively(runner, initialValue, runCount) {
+  let state = initialValue;
+  for (let step = 0; step < runCount; step++) {
+    state = runner(state, step);
+    yield state
   }
 }
